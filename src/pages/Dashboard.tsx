@@ -104,18 +104,18 @@ export default function Dashboard() {
           <h3 className="font-semibold mb-4 text-sm sm:text-base">Weekly Breakdown</h3>
           <div className="space-y-3">
             {[
-              { category: "Transport", value: 45, color: "bg-chart-1" },
-              { category: "Energy", value: 30, color: "bg-chart-2" },
-              { category: "Food", value: 25, color: "bg-chart-3" },
+              { category: "Transport", value: 45, color: "bg-blue-500", textColor: "text-blue-600 dark:text-blue-400" },
+              { category: "Energy", value: 30, color: "bg-yellow-500", textColor: "text-yellow-600 dark:text-yellow-400" },
+              { category: "Food", value: 25, color: "bg-green-500", textColor: "text-green-600 dark:text-green-400" },
             ].map((item, index) => (
-              <div key={index} className="space-y-1">
+              <div key={index} className="space-y-2">
                 <div className="flex justify-between text-xs sm:text-sm">
-                  <span className="text-muted-foreground">{item.category}</span>
-                  <span className="font-medium">{item.value}%</span>
+                  <span className="font-medium text-foreground">{item.category}</span>
+                  <span className={`font-bold ${item.textColor}`}>{item.value}%</span>
                 </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
+                <div className="h-3 bg-muted rounded-full overflow-hidden">
                   <div
-                    className={`h-full ${item.color} rounded-full transition-all`}
+                    className={`h-full ${item.color} rounded-full transition-all duration-500 ease-out`}
                     style={{ width: `${item.value}%` }}
                   />
                 </div>

@@ -109,7 +109,7 @@ export function CarbonFootprintChart() {
         <TabsContent value="weekly" className="space-y-4">
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={weeklyData}>
+              <AreaChart data={weeklyData}>
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                 <XAxis 
                   dataKey="week" 
@@ -129,31 +129,34 @@ export function CarbonFootprintChart() {
                   }}
                 />
                 <Legend />
-                <Line 
+                <Area 
                   type="monotone" 
                   dataKey="transport" 
+                  stackId="1"
                   stroke="hsl(var(--chart-1))" 
-                  strokeWidth={2}
+                  fill="hsl(var(--chart-1))"
+                  fillOpacity={0.6}
                   name="Transport"
-                  dot={{ fill: 'hsl(var(--chart-1))' }}
                 />
-                <Line 
+                <Area 
                   type="monotone" 
                   dataKey="energy" 
+                  stackId="1"
                   stroke="hsl(var(--chart-2))" 
-                  strokeWidth={2}
+                  fill="hsl(var(--chart-2))"
+                  fillOpacity={0.6}
                   name="Energy"
-                  dot={{ fill: 'hsl(var(--chart-2))' }}
                 />
-                <Line 
+                <Area 
                   type="monotone" 
                   dataKey="food" 
+                  stackId="1"
                   stroke="hsl(var(--chart-3))" 
-                  strokeWidth={2}
+                  fill="hsl(var(--chart-3))"
+                  fillOpacity={0.6}
                   name="Food"
-                  dot={{ fill: 'hsl(var(--chart-3))' }}
                 />
-              </LineChart>
+              </AreaChart>
             </ResponsiveContainer>
           </div>
           <div className="grid grid-cols-3 gap-3 text-center">
