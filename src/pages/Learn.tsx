@@ -21,7 +21,8 @@ import {
   Leaf,
   Recycle,
   Star,
-  TrendingUp
+  TrendingUp,
+  Target
 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Navigation } from "@/components/Navigation";
@@ -425,14 +426,162 @@ export default function Learn() {
             <div className="p-3 bg-blue-500/20 rounded-full shrink-0">
               <BookOpen className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <div className="space-y-2">
-              <h3 className="font-bold text-lg sm:text-xl text-foreground">What You'll Learn</h3>
+            <div className="space-y-3">
+              <h3 className="font-bold text-lg sm:text-xl text-foreground">Understanding Carbon Footprint</h3>
               <p className="text-sm sm:text-base text-foreground/80 leading-relaxed">
-                A carbon footprint is the total amount of greenhouse gases released because of our actions — like traveling, using electricity, eating food, or buying products. 
+                A carbon footprint is the total amount of greenhouse gases (like CO₂ and methane) released into the atmosphere because of our daily activities — traveling, using electricity, eating food, or buying products. 
                 Every choice we make has an impact on our planet! 🌱
+              </p>
+              <p className="text-sm sm:text-base text-foreground/80 leading-relaxed">
+                <strong>Why does it matter?</strong> Greenhouse gases trap heat in Earth's atmosphere, causing global warming. By tracking and reducing our carbon footprint, we can help fight climate change and protect our planet for future generations.
               </p>
             </div>
           </div>
+        </Card>
+
+        {/* App Benefits Section */}
+        <Card className="p-6 sm:p-8 space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-green-500/20 rounded-lg">
+              <Award className="h-6 w-6 text-green-600 dark:text-green-400" />
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">How This App Helps You</h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">📊</span>
+                <h3 className="font-bold text-foreground">Track Your Impact</h3>
+              </div>
+              <p className="text-sm text-foreground/80 leading-relaxed">
+                Use our accurate calculator to measure daily emissions from transport, energy, and food. See exactly where your biggest impact comes from.
+              </p>
+            </div>
+
+            <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">🎯</span>
+                <h3 className="font-bold text-foreground">Set & Achieve Goals</h3>
+              </div>
+              <p className="text-sm text-foreground/80 leading-relaxed">
+                Complete sustainability challenges, earn points, and watch your progress. Small daily actions lead to big environmental changes!
+              </p>
+            </div>
+
+            <div className="p-4 bg-purple-50 dark:bg-purple-950/20 rounded-lg border border-purple-200 dark:border-purple-800">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">🤖</span>
+                <h3 className="font-bold text-foreground">Get Expert Advice</h3>
+              </div>
+              <p className="text-sm text-foreground/80 leading-relaxed">
+                Ask our AI Eco-Coach for personalized tips based on real data. Learn the most effective ways to reduce your footprint.
+              </p>
+            </div>
+
+            <div className="p-4 bg-yellow-50 dark:bg-yellow-950/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">🏆</span>
+                <h3 className="font-bold text-foreground">Stay Motivated</h3>
+              </div>
+              <p className="text-sm text-foreground/80 leading-relaxed">
+                Compete on the leaderboard, celebrate milestones, and join a community committed to fighting climate change together.
+              </p>
+            </div>
+          </div>
+        </Card>
+
+        {/* Sustainability Goals Section */}
+        <Card className="p-6 sm:p-8 space-y-6 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 border-emerald-200 dark:border-emerald-800">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-emerald-500/20 rounded-lg">
+              <Target className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">Sustainable Goals You Can Achieve</h2>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex gap-3">
+              <div className="shrink-0">
+                <div className="w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 flex items-center justify-center text-white font-bold">1</div>
+              </div>
+              <div>
+                <h4 className="font-bold text-foreground mb-1">Reduce Daily Emissions by 20%</h4>
+                <p className="text-sm text-foreground/80">Achievable in 2-3 weeks by switching to public transport and reducing meat consumption. Save ~1,500 kg CO₂ annually!</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="shrink-0">
+                <div className="w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 flex items-center justify-center text-white font-bold">2</div>
+              </div>
+              <div>
+                <h4 className="font-bold text-foreground mb-1">Go Carbon Neutral in Energy</h4>
+                <p className="text-sm text-foreground/80">Switch to LED bulbs, unplug devices, and optimize AC usage. Offset remaining with renewable energy sources. Impact: 500-800 kg CO₂/year.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="shrink-0">
+                <div className="w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 flex items-center justify-center text-white font-bold">3</div>
+              </div>
+              <div>
+                <h4 className="font-bold text-foreground mb-1">Adopt Sustainable Eating</h4>
+                <p className="text-sm text-foreground/80">2-3 plant-based meals per week reduces food footprint by 30%. One year impact: 600-800 kg CO₂ saved, equivalent to 36 trees planted!</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="shrink-0">
+                <div className="w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 flex items-center justify-center text-white font-bold">4</div>
+              </div>
+              <div>
+                <h4 className="font-bold text-foreground mb-1">Complete All Challenges</h4>
+                <p className="text-sm text-foreground/80">Finish transport, energy, food, and waste challenges. Combined impact: 2,000+ kg CO₂ reduced yearly, plus you'll build lasting eco-friendly habits!</p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-white/80 dark:bg-black/20 rounded-lg border-2 border-emerald-400 dark:border-emerald-600">
+              <p className="text-sm sm:text-base text-foreground font-semibold text-center">
+                🌍 <strong>Your Ultimate Goal:</strong> Reduce your carbon footprint by 50% within 6 months. 
+                This equals preventing ~3 tons of CO₂ — the same as planting 135 trees! 🌳
+              </p>
+            </div>
+          </div>
+        </Card>
+
+        {/* Real Impact Examples */}
+        <Card className="p-6 sm:p-8 space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-orange-500/20 rounded-lg">
+              <TrendingUp className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">Real Impact: What Your Savings Mean</h2>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-4">
+            <div className="p-4 text-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <div className="text-3xl mb-2">🌳</div>
+              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">100 kg</p>
+              <p className="text-xs sm:text-sm text-foreground/80 font-medium">CO₂ Saved = <strong>4-5 Trees Planted</strong></p>
+            </div>
+
+            <div className="p-4 text-center bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/30 dark:to-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+              <div className="text-3xl mb-2">🚗</div>
+              <p className="text-2xl font-bold text-green-600 dark:text-green-400">500 kg</p>
+              <p className="text-xs sm:text-sm text-foreground/80 font-medium">CO₂ Saved = <strong>2,600 km Not Driven</strong></p>
+            </div>
+
+            <div className="p-4 text-center bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/30 dark:to-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
+              <div className="text-3xl mb-2">💡</div>
+              <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">1,000 kg</p>
+              <p className="text-xs sm:text-sm text-foreground/80 font-medium">CO₂ Saved = <strong>45 Trees Planted</strong></p>
+            </div>
+          </div>
+
+          <p className="text-sm text-center text-foreground/80 italic pt-2">
+            Every kilogram of CO₂ you prevent makes a real difference. Track your progress and see your impact grow! 📈
+          </p>
         </Card>
 
         {/* Formula Breakdown */}

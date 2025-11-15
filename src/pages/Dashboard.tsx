@@ -27,7 +27,7 @@ export default function Dashboard() {
       <Header />
 
       <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-4 sm:space-y-6">
-        <div className="bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-primary-foreground p-6 sm:p-8 rounded-lg shadow-md relative overflow-hidden">
+        <div className="bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-primary-foreground p-6 sm:p-8 rounded-lg shadow-md relative overflow-hidden z-0">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full translate-y-1/2 -translate-x-1/2"></div>

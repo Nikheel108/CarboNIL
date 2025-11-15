@@ -7,7 +7,7 @@ const navItems = [
   { icon: Calculator, label: "Calculator", path: "/calculator" },
   { icon: BookOpen, label: "Learn", path: "/learn" },
   { icon: Target, label: "Challenges", path: "/challenges" },
-  { icon: Trophy, label: "Board", path: "/leaderboard" },
+  { icon: Trophy, label: "Leaderboard", path: "/leaderboard" },
 ];
 
 export function Navigation() {

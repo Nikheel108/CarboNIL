@@ -13,6 +13,22 @@ type Message = {
 };
 
 // Enhanced knowledge base with topic detection
+const isGreeting = (message: string): boolean => {
+  const greetings = [
+    'hello', 'hi', 'hey', 'hii', 'hiii', 'helo', 'hola', 'namaste', 'good morning',
+    'good afternoon', 'good evening', 'good night', 'greetings', 'howdy', 'sup', 'yo',
+    'what\'s up', 'whats up', 'wassup'
+  ];
+  
+  const lowerMessage = message.toLowerCase().trim();
+  return greetings.some(greeting => 
+    lowerMessage === greeting || 
+    lowerMessage.startsWith(greeting + ' ') ||
+    lowerMessage.startsWith(greeting + ',') ||
+    lowerMessage.startsWith(greeting + '!')
+  );
+};
+
 const isRelatedToApp = (message: string): boolean => {
   const appKeywords = [
     // Carbon & Climate
@@ -43,72 +59,109 @@ const isRelatedToApp = (message: string): boolean => {
   return appKeywords.some(keyword => lowerMessage.includes(keyword));
 };
 
-// Intelligent response system
+// Intelligent response system with user-friendly language
 const getCoachResponse = (userMessage: string): string => {
   const lowerMessage = userMessage.toLowerCase();
   
+  // Handle greetings first
+  if (isGreeting(userMessage)) {
+    return "👋 **Hello! Welcome to Eco-Coach!** 🌱\n\n" +
+           "I'm here to help you understand and reduce your carbon footprint in simple, easy-to-understand ways!\n\n" +
+           "**You can ask me about:**\n\n" +
+           "🚗 **Transportation** - Compare emissions of different vehicles, find eco-friendly options\n" +
+           "⚡ **Energy Saving** - Tips to reduce electricity bills and carbon impact\n" +
+           "🍽️ **Food Choices** - How your diet affects the environment\n" +
+           "📊 **Track Progress** - Understand your stats and improvements\n" +
+           "💡 **Quick Tips** - Easy actions you can take today\n\n" +
+           "Try asking: *'How can I reduce my car emissions?'* or *'What are simple energy-saving tips?'* 😊";
+  }
+  
   // Check if query is related to the app
   if (!isRelatedToApp(lowerMessage)) {
-    return "🌱 I'm your Eco-Coach, specialized in helping you reduce your carbon footprint!\n\n" +
-           "I can only answer questions related to:\n" +
-           "• 🚗 Transportation & carbon emissions\n" +
-           "• ⚡ Energy consumption & saving tips\n" +
-           "• 🍽️ Food choices & dietary impact\n" +
-           "• 📊 Your carbon footprint tracking\n" +
-           "• 🏆 Eco-challenges & achievements\n" +
-           "• 💡 Sustainability tips & advice\n\n" +
-           "Please ask me something related to carbon footprint tracking or environmental sustainability! 😊";
+    return "🤔 **Hmm, I'm not sure how to help with that...**\n\n" +
+           "I'm your **Eco-Coach**, and I specialize in helping you reduce your carbon footprint and live more sustainably!\n\n" +
+           "**Please ask me questions about:**\n\n" +
+           "• 🚗 How to reduce transportation emissions\n" +
+           "• ⚡ Ways to save energy at home\n" +
+           "• 🍽️ Food choices that help the planet\n" +
+           "• 📊 Understanding your carbon footprint\n" +
+           "• 🏆 Completing eco-challenges\n" +
+           "• 💡 Simple sustainability tips\n\n" +
+           "**Example questions:**\n" +
+           "- *'Which is better: bike or bus?'*\n" +
+           "- *'How can I reduce my electricity use?'*\n" +
+           "- *'Is beef really that bad for the environment?'*\n\n" +
+           "I'm here to make sustainability simple and easy! 🌍";
   }
 
-  // TRANSPORT QUERIES - More specific matching
+  // TRANSPORT QUERIES - User-friendly responses
   if (lowerMessage.includes("car") && (lowerMessage.includes("vs") || lowerMessage.includes("compare") || lowerMessage.includes("difference"))) {
-    return "🚗 **Car Comparison - Accurate CO₂ Emissions:**\n\n" +
-           "**Per Kilometer:**\n" +
-           "• Petrol Car: 0.192 kg CO₂/km\n" +
-           "• Diesel Car: 0.171 kg CO₂/km (11% less than petrol)\n" +
-           "• Electric Car: 0.053 kg CO₂/km (72% less than petrol!)\n\n" +
-           "**For 50km daily commute (annual):**\n" +
-           "• Petrol: 3,504 kg CO₂/year\n" +
-           "• Diesel: 3,121.5 kg CO₂/year\n" +
-           "• Electric: 966.5 kg CO₂/year\n\n" +
-           "💡 Switching from petrol to electric saves ~2,537 kg CO₂/year - equivalent to planting 115 trees!";
+    return "🚗 **Let me explain car emissions in simple terms!**\n\n" +
+           "**Which car emits less CO₂ per kilometer?**\n\n" +
+           "🔴 **Petrol Car:** 0.192 kg CO₂ per km (highest)\n" +
+           "🟡 **Diesel Car:** 0.171 kg CO₂ per km (11% better than petrol)\n" +
+           "🟢 **Electric Car:** 0.053 kg CO₂ per km (72% better than petrol!)\n\n" +
+           "**What does this mean for you?**\n" +
+           "If you drive 20 km daily:\n" +
+           "• Petrol car = 1,400 kg CO₂/year\n" +
+           "• Electric car = 387 kg CO₂/year\n" +
+           "• **You save 1,013 kg CO₂** - that's like planting 46 trees! 🌳\n\n" +
+           "💡 **My advice:** If buying new, go electric. If not, combine with public transport or carpooling to reduce impact!";
   }
 
   if (lowerMessage.includes("electric") && (lowerMessage.includes("car") || lowerMessage.includes("vehicle") || lowerMessage.includes("ev"))) {
-    return "⚡ **Electric Vehicles - The Smart Choice!**\n\n" +
-           "**Emissions:** 0.053 kg CO₂/km (72% lower than petrol)\n\n" +
-           "**Benefits:**\n" +
-           "• Save ~₹60,000/year on fuel (vs petrol)\n" +
-           "• Govt. subsidies up to ₹1.5L available\n" +
-           "• Lower maintenance costs (fewer moving parts)\n" +
-           "• Zero tailpipe emissions in cities\n\n" +
-           "**Charging:** 1 kWh = ~6km range | Home charging costs ₹6-8/kWh\n\n" +
-           "Use our **Calculator** to see your exact savings by switching to EV!";
+    return "⚡ **Should you switch to an Electric Vehicle?**\n\n" +
+           "**Environmental Impact:**\n" +
+           "Electric cars emit only 0.053 kg CO₂ per km - that's 72% less than petrol cars!\n\n" +
+           "**Your Benefits:**\n\n" +
+           "💰 **Save Money:** ₹60,000/year on fuel compared to petrol\n" +
+           "🎁 **Government Help:** Get subsidies up to ₹1.5 Lakh\n" +
+           "🔧 **Less Maintenance:** Electric cars have fewer parts to break\n" +
+           "🌍 **Clean Air:** Zero emissions in your city\n\n" +
+           "**How Charging Works:**\n" +
+           "• Charge at home for ₹6-8 per unit\n" +
+           "• 1 unit gives you ~6 km of driving\n" +
+           "• Full charge = 300-500 km range (depending on model)\n\n" +
+           "💡 **My Recommendation:** Use our Calculator tab to see exactly how much you'll save each month!";
   }
 
   if (lowerMessage.includes("bike") || lowerMessage.includes("cycle") || lowerMessage.includes("bicycle")) {
-    return "🚴 **Cycling - The Ultimate Eco-Transport!**\n\n" +
-           "**Carbon Impact:** 0 kg CO₂ (100% emission-free!)\n\n" +
-           "**Amazing Benefits:**\n" +
-           "• **Health**: Burns 400-600 calories/hour, improves cardiovascular health\n" +
-           "• **Cost**: Save ₹50,000+/year vs car ownership\n" +
-           "• **Speed**: Faster than cars for <5km in traffic\n" +
-           "• **Environment**: No pollution, noise, or congestion\n\n" +
-           "**Pro Tip:** Combine cycling with public transport for longer commutes. Even replacing 2-3 car trips/week saves ~200 kg CO₂/year!\n\n" +
-           "Track your cycling in our Calculator! 📊";
+    return "🚴 **Cycling is the BEST choice for the environment!**\n\n" +
+           "**Why? Simple answer:**\n" +
+           "✅ ZERO emissions - absolutely no CO₂!\n" +
+           "✅ ZERO fuel costs - free to ride!\n" +
+           "✅ Good for YOUR health - burn calories while commuting\n\n" +
+           "**Real Benefits:**\n\n" +
+           "💪 **Health:** Burn 400-600 calories per hour, strengthen your heart\n" +
+           "💰 **Money:** Save ₹50,000+ every year (no fuel, insurance, parking)\n" +
+           "⚡ **Speed:** Actually faster than cars for short trips under 5 km!\n" +
+           "😊 **Happiness:** No traffic stress, fresh air, feel good about helping Earth\n\n" +
+           "**Pro Tip for Longer Distances:**\n" +
+           "Bike to the metro/bus station, then use public transport. This way you save money AND carbon!\n\n" +
+           "Even if you replace just 2-3 car trips per week with cycling, you'll save 200 kg CO₂ every year. That's huge! 🌟";
   }
 
   if (lowerMessage.includes("bus") || lowerMessage.includes("train") || lowerMessage.includes("public transport") || lowerMessage.includes("metro")) {
-    return "🚇 **Public Transport - Smart & Sustainable!**\n\n" +
-           "**Accurate Emissions:**\n" +
-           "• Train/Metro: 0.041 kg CO₂/km (78% less than cars!)\n" +
-           "• Bus: 0.089 kg CO₂/km (54% less than cars!)\n\n" +
-           "**Real Example - 20km daily commute:**\n" +
-           "• Car (petrol): 3.84 kg CO₂/day = 1,401 kg/year\n" +
-           "• Train: 0.82 kg CO₂/day = 299 kg/year\n" +
-           "• **Savings: 1,102 kg CO₂/year** ♻️\n\n" +
-           "Plus: Read books, avoid traffic stress, save parking costs!\n\n" +
-           "Calculate your exact savings in our **Transport Calculator**! 🧮";
+    return "🚇 **Public Transport - Smart, Cheap, and Green!**\n\n" +
+           "Let me break it down simply:\n\n" +
+           "**CO₂ Emissions (per person per km):**\n" +
+           "🟢 Train/Metro: 0.041 kg (LOWEST!)\n" +
+           "🟡 Bus: 0.089 kg (half of a car)\n" +
+           "🔴 Petrol Car: 0.192 kg (HIGHEST)\n\n" +
+           "**Real Example - Your 20 km Daily Commute:**\n\n" +
+           "If you drive a car:\n" +
+           "• 3.84 kg CO₂ every day\n" +
+           "• 1,401 kg CO₂ per year\n\n" +
+           "If you take the train:\n" +
+           "• 0.82 kg CO₂ every day\n" +
+           "• 299 kg CO₂ per year\n\n" +
+           "**You save 1,102 kg CO₂** - equal to planting 50 trees! 🌳\n\n" +
+           "**Plus More Benefits:**\n" +
+           "📚 Read books during commute\n" +
+           "💰 Save on parking fees\n" +
+           "😌 No traffic stress\n" +
+           "👥 Meet people\n\n" +
+           "Use our **Calculator** to see your exact savings!";
   }
 
   if (lowerMessage.includes("motorcycle") || lowerMessage.includes("scooter") || lowerMessage.includes("two wheeler")) {
